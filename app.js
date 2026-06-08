@@ -1,7 +1,13 @@
+require("dotenv").config();
+
 const express =require("express");
 
 const connectDB= require("./src/config/database");
 const app = express();
+
+app.post("/signup", (req,res) => {
+
+})
 
 connectDB().then(() => {
     console.log("Database connected sucessfully");
@@ -15,4 +21,6 @@ connectDB().then(() => {
     console.log(err); 
 
 });
+
+console.log("URI =", process.env.MONGO_URI);
   
