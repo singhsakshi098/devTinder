@@ -9,3 +9,5 @@
 -js object vs json 
 -add the express.json
 -make your signup API dynamic to recieve data from the end user
+user.findOne with duplicate email id so which one will returned
+-API- Feed API -GET/feed -get all the users from the database
