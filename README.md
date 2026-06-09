@@ -1,5 +1,11 @@
-created a cluster on mongodb official website and (mongo altas)
-installed mongoose library
-connect application to the database<"Connection url"/devTinder
-called connectDB function and connect to database before starting application on 7777;
-created a UserSchema 
+-created a cluster on mongodb official website and (mongo altas);
+-installed mongoose library;
+-connect application to the database<"Connection url"/devTinder;
+-called connectDB function and connect to database before starting application on 7777;
+-created a UserSchema and usermodel;
+-created post/signup api tp add data iin the database
+-pushed some documents using API call form postman;
+-error handling using try , catch 
+-js object vs json 
+-add the express.json
+-make your signup API dynamic to recieve data from the end user

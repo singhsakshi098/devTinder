@@ -4,10 +4,24 @@ const express =require("express");
 
 const connectDB= require("./src/config/database");
 const app = express();
+const User=require("./models/user");
 
-app.post("/signup", (req,res) => {
+app.use(express.json());
 
-})
+app.post("/signup",async (req,res) => {
+    
+  // creating a new instance of the user model
+    const user =new User(req.body);
+
+    try{
+    await user.save();
+    res.send("user added successfully");
+    } catch (err){
+        res.status(400).send("Error saving the user:" + err.message);
+    }
+    
+
+});
 
 connectDB().then(() => {
     console.log("Database connected sucessfully");
@@ -22,5 +36,5 @@ connectDB().then(() => {
 
 });
 
-console.log("URI =", process.env.MONGO_URI);
+
   
