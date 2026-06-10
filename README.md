@@ -41,3 +41,6 @@ about: {
 - Allows for custom validation logic to be applied to a field. This can include custom functions for more complex validation needs.
 ## 9. `timestamps`
 - Automatically adds `createdAt` and `updatedAt` fields to the schema, tracking when the document was created and last modified.
+
+--add API level validation on patch req and signup post api
+--DATA VALIDATION :> add api validation for each field 
