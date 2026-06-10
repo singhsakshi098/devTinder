@@ -11,3 +11,8 @@
 -make your signup API dynamic to recieve data from the end user
 user.findOne with duplicate email id so which one will returned
 -API- Feed API -GET/feed -get all the users from the database
+-api - bget user by id
+-created a delete user api
+-difference between patch and put
+-api - updated a user by patch
+-try to learn mongo db documentation
