@@ -16,3 +16,28 @@ user.findOne with duplicate email id so which one will returned
 -difference between patch and put
 -api - updated a user by patch
 -try to learn mongo db documentation
+-explored data sanitization and schema validation features in Mongoose. These features help enforce data integrity, improve data consistency, and add extra layers of validation to ensure that the data saved in MongoDB adheres to specific rules.
+
+## Schema Types in Mongoose
+Mongoose provides various schema types and properties that can be used to enforce data validation and sanitization. Key properties include:
+
+### 1. `required` Ensures that a field must be provided before a document is saved.
+### 2. `unique`
+- Specifies that the value in the field must be unique across the collection.
+### 3. `default`
+- Sets a default value for a field if no value is provided.
+```javascript
+about: {
+        type: String,
+        `default: "Dev is in search for someone here"`
+    }
+```
+
+### 4. `lowercase`
+- Converts the string value to lowercase before storing it in the database.
+### 5. `trim`
+- Removes leading and trailing whitespace from a string before saving it
+### 8. `validate`
+- Allows for custom validation logic to be applied to a field. This can include custom functions for more complex validation needs.
+## 9. `timestamps`
+- Automatically adds `createdAt` and `updatedAt` fields to the schema, tracking when the document was created and last modified.
