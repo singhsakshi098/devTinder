@@ -44,3 +44,11 @@ about: {
 
 --add API level validation on patch req and signup post api
 --DATA VALIDATION :> add api validation for each field 
+--Intalled validator by npm i validator
+-- explored validator library function and use validator function for password & email
+
+--## Benefits of Using Validator.js
+- **Improved Data Integrity**: Ensures only valid data is stored in the database.
+- **Enhanced Security**: Prevents common vulnerabilities caused by invalid inputs.
+- **Ease of Use**: Simple methods for complex validations reduce development time.
+- **Standard Compliance**: Ensures data adheres to industry standards (e.g., email formatting, URL structure)
