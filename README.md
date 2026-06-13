@@ -56,3 +56,8 @@ about: {
 
 ## Conclusion
 Using `validator.js` enhances the robustness of input validation in the DevTinder app. It simplifies the process of ensuring data consistency and security, particularly for critical fields like email, photo URLs, and passwords.
+
+--NEVER trust req.body
+-validate data in Signup API 
+-Install bcrypt package
+--Create PasswordHash using bcrypt.hash & save the user with  bcrypted password
