@@ -61,3 +61,9 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 -validate data in Signup API 
 -Install bcrypt package
 --Create PasswordHash using bcrypt.hash & save the user with  bcrypted password
+-install cookie-parser
+--just sended the dummy cookie to user 
+--created GET / profile Api and check if you get cookie back
+--install jsonwebtoken  
+-- in login api,after email and password validation, created a JWT token and send it to the user in cookies
+--read the cookiees inside your profile API and find the logged in user

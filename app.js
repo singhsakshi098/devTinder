@@ -5,9 +5,12 @@ const app = express();
 const User=require("./models/user");
 const {validateSignupData } = require("./src/utils/validation");
 const bcrypt = require("bcrypt");
+const cookieParser =require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.post("/signup",async (req,res) => {
      try{
@@ -40,6 +43,65 @@ app.post("/signup",async (req,res) => {
 
 });
 
+app.post("/login", async(req,res) => {
+    try{
+        const {emailId , password } = req.body;
+
+        const user =  await User.findOne({emailId: emailId});
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const ispasswordValid =await bcrypt.compare(password , user.password);
+        if(ispasswordValid) {
+
+            //Create a JWT token 
+            const token = await jwt.sign({_id: user._id}, "DEVtinder2009");
+            console.log(token);
+
+            //Add the token to cookie and send the response back to the user
+            res.cookie("token", token);
+            res.send("Login sucessfull!!");
+        }
+        else{ 
+            throw new Error ("password is incorrect");
+        }
+    }
+    catch (err){
+        res.status(400).send("Error:" + err.message);
+    }
+
+});
+
+app.get("/profile", async (req,res) =>{
+    try{
+    const cookies = req.cookies;
+
+    const { token } = cookies;
+
+    if(!token){
+        throw new Error("Invalid Token");
+    }
+
+    const decodedMessage = await jwt.verify(token , "DEVtinder2009");
+
+    const { _id} = decodedMessage;
+    console.log("Logged in user is :" + _id);
+
+    const user = await User.findById(_id);
+    if(!user) {
+        throw new Error("user not found");
+    }
+    res.send(user);
+}
+
+   catch (err){
+    res.status(400).send("Error: " + err.message);
+
+   }
+    res.send("Reading Cookie");
+    
+})
 
 //GET user by email
 app.get("/user", async (req,res) =>{
