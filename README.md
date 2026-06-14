@@ -70,3 +70,5 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 --userAuth middlewared write
 -- added the userAuth middleware to profile api and a new ConnectionRequest API
 --set the expiry of jwt token and cookies 
+--created userSchema method to getJWT()
+--created userSchema method to comparepassword(passwordInputByUser)
