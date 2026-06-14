@@ -67,3 +67,6 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 --install jsonwebtoken  
 -- in login api,after email and password validation, created a JWT token and send it to the user in cookies
 --read the cookiees inside your profile API and find the logged in user
+--userAuth middlewared write
+-- added the userAuth middleware to profile api and a new ConnectionRequest API
+--set the expiry of jwt token and cookies to 

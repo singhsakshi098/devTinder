@@ -7,6 +7,7 @@ const {validateSignupData } = require("./src/utils/validation");
 const bcrypt = require("bcrypt");
 const cookieParser =require("cookie-parser");
 const jwt = require("jsonwebtoken");
+const { userAuth } = require("./middlewares/auth");
 
 
 app.use(express.json());
@@ -21,7 +22,7 @@ app.post("/signup",async (req,res) => {
 
     //Encrypt the password
     const  passwordHash = await bcrypt.hash(password,10);
-    console.log(passwordHash);
+    
  
     
   // creating a new instance of the user model
@@ -56,11 +57,15 @@ app.post("/login", async(req,res) => {
         if(ispasswordValid) {
 
             //Create a JWT token 
-            const token = await jwt.sign({_id: user._id}, "DEVtinder2009");
-            console.log(token);
+            const token = await jwt.sign({_id: user._id}, "DEVtinder2009", {
+                expiresIn: "1d",
+            });
+           
 
             //Add the token to cookie and send the response back to the user
-            res.cookie("token", token);
+            res.cookie("token", token, {
+            expires: new Date(Date.now() +8 * 3600000000),
+            });
             res.send("Login sucessfull!!");
         }
         else{ 
@@ -73,36 +78,27 @@ app.post("/login", async(req,res) => {
 
 });
 
-app.get("/profile", async (req,res) =>{
+app.get("/profile", userAuth,  async (req,res) =>{
     try{
-    const cookies = req.cookies;
-
-    const { token } = cookies;
-
-    if(!token){
-        throw new Error("Invalid Token");
-    }
-
-    const decodedMessage = await jwt.verify(token , "DEVtinder2009");
-
-    const { _id} = decodedMessage;
-    console.log("Logged in user is :" + _id);
-
-    const user = await User.findById(_id);
-    if(!user) {
-        throw new Error("user not found");
-    }
+     const user =req.user;
+      
     res.send(user);
-}
-
+    }
    catch (err){
     res.status(400).send("Error: " + err.message);
 
    }
-    res.send("Reading Cookie");
     
-})
+});
 
+app.post("/sendConnectionRequest",userAuth, async (req , res) => {
+    const user = req.user;
+    //Sending a connection request
+
+    console.log("sending a connection request");
+
+    res.send(user.firstName +" "+  "is sending the connection Request ");
+});
 //GET user by email
 app.get("/user", async (req,res) =>{
     const userEmail = req.body.emailId;
@@ -131,7 +127,7 @@ app.get("/feed", async (req, res) => {
         if (users.length === 0) {
             res.send("No user found")
         } else {
-            console.log(users);
+          //  console.log(users);
             res.send(users)
         }
     }
@@ -202,7 +198,7 @@ app.patch("/user/:userId", async (req, res) => {
         returnDocument: "after",
         runValidators:true
      });
-        console.log(user)
+       // console.log(user)
         res.send("User updated successfully")
 
     } catch (err) {
