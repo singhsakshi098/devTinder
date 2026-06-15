@@ -192,3 +192,7 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 --created routes folder for managing auth,profile,request routers
 -created authRouter,profileRouter,requestRouter
 -Import these routers in app.js
+--created Post/logout api
+-created POST /profile/edit
+- try to create for learning create PATCH /profile/passwordAPI => forget password api
+-Make  validate all the data i every post , patch apis,
