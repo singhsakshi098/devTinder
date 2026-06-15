@@ -72,3 +72,7 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 --set the expiry of jwt token and cookies 
 --created userSchema method to getJWT()
 --created userSchema method to comparepassword(passwordInputByUser)
+
+--explored Tinder Apis
+--created a list of all the api list which can be in the devtinder
+--Group multiple routes under respective router like..authrouter , user , connectionRoute
