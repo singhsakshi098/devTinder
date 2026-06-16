@@ -196,3 +196,12 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 -created POST /profile/edit
 - try to create for learning create PATCH /profile/passwordAPI => forget password api
 -Make  validate all the data i every post , patch apis,
+-created a connectionRequestSchema 
+-send connection Request Api 
+-proper vaidation of data
+-handled all the corner cases
+-schema.pre function
+-$or quesry from mongoose
+-read more about indexes in mongodb 
+-what is the use of indexes and disadvantages of creating ?
+-read the article about compound indexes
