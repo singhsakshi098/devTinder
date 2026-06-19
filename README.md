@@ -206,3 +206,5 @@ Using `validator.js` enhances the robustness of input validation in the DevTinde
 -what is the use of indexes and disadvantages of creating ?
 -read the article about compound indexes
 -Created request review api 
+logic for get /userAPI
+explore the $nin ,$and, $ne anD other query operators
