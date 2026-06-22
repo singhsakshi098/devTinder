@@ -62,7 +62,13 @@ const userSchema = new mongoose.Schema(
     },
     skills:{
         type:[String],
-    }
+    },
+
+    photoUrl: {
+    type: String,
+    default: "https://images.unsplash.com/photo-1500648767791-00dcc994a43b?w=500"
+  }
+
     
 
 },

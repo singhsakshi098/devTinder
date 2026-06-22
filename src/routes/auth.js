@@ -11,7 +11,15 @@ authRouter.post("/signup",async (req,res) => {
 
     //validation of data 
     validateSignupData(req);
-    const {firstName , lastName , emailId, password} = req.body;
+    const {firstName,
+    lastName,
+    emailId,
+    password,
+    age,
+    gender,
+    about,
+    photoUrl,
+    skills,} = req.body;
 
     //Encrypt the password
     const  passwordHash = await bcrypt.hash(password,10);
@@ -19,12 +27,16 @@ authRouter.post("/signup",async (req,res) => {
  
     
   // creating a new instance of the user model
-    const user =new User({
-        firstName,
-        lastName,
-        emailId,
-        password: passwordHash,
-        
+    const user = new User({
+      firstName,
+      lastName,
+      emailId,
+      password: passwordHash,
+      age,
+      gender,
+      about,
+      photoUrl,
+      skills,
     });
 
   
@@ -57,7 +69,7 @@ authRouter.post("/login", async(req,res) => {
             res.cookie("token", token, {
             expires: new Date(Date.now() +8 * 3600000000),
             });
-            res.send("Login sucessfull!!");
+            res.send(user);
         }
         else{ 
             throw new Error ("password is incorrect");

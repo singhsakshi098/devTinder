@@ -4,7 +4,7 @@ const userAuth = async (req, res, next) => {
     try {
         const { token } = req.cookies
         if (!token) {
-            throw new Error("Not a Vaid token !!")
+            return res.status(401).send("Please Login");
         }
 
         const deocodedObj = await jwt.verify(token, "DEVtinder2009")
@@ -20,6 +20,7 @@ const userAuth = async (req, res, next) => {
         res.status(400).send("ERROR : " + err.message)
     }
 }
+
 module.exports = {
     userAuth
 }

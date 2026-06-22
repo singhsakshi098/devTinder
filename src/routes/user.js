@@ -4,7 +4,7 @@ const userRouter = express.Router();
 const { userAuth } = require("../../middlewares/auth");
 const ConnectionRequest = require("../../models/connectionRequest");
 
-const USER_SAFE_DATA ="firstName lastName age gender about skiils";
+const USER_SAFE_DATA ="firstName lastName age gender about photoUrl skills";
 const User = require("../../models/user");
 
     
@@ -19,7 +19,7 @@ userRouter.get("/user/requests/recieved", userAuth, async (req, res) => {
         toUserId: loggedInUser._id,
         status: "intrested",
         }).populate("fromUserId", 
-        "firstName lastName age gender about skiils"
+        "firstName lastName age gender about skills"
     );
 
         if (connectionRequests) {
