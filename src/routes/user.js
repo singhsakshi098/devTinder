@@ -19,7 +19,7 @@ userRouter.get("/user/requests/recieved", userAuth, async (req, res) => {
         toUserId: loggedInUser._id,
         status: "intrested",
         }).populate("fromUserId", 
-        "firstName lastName age gender about skills"
+        "firstName lastName photoUrl  age gender about skills"
     );
 
         if (connectionRequests) {
@@ -70,7 +70,7 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
     const loggedInUser = req.user;
 
     const page = parseInt(req.query.page || 1);
-    let limit = parseInt(req.query.limit || 10);
+    let limit = parseInt(req.query.limit || 50);
     limit = limit > 50 ? 50 : limit;
     const skip = (page - 1) * limit;
 
